@@ -1,0 +1,123 @@
+<div class="table-responsive table-container">
+  <table class="table table-bordered  table-hover dark-mode-table">
+    <thead class="table-header">
+    <tr class="th calendar">
+      <th style="background-color: rgb(78,72,72)">
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; width: 240px; padding-bottom: 29px;">
+          <div class="dropdown" id="filters_month-wrapper">
+            <div class="dropdown-button"></div>
+            <select id="filters_month" class="form-select" style="font-size: 15px; font-weight: 200; border-radius: 0"
+                    (change)="updateCurrentDate()" [(ngModel)]="selectedMonth">
+              <option *ngFor="let month of months; let i = index" [value]="i + 1"
+                      [selected]="i === currentDate().getMonth()">{{ month }}
+              </option>
+            </select>
+          </div>
+          <div class="dropdown" id="filters_year-wrapper">
+            <div class="dropdown-button"></div>
+            <select id="filters_year" class="form-select" style="font-size: 15px; font-weight: 200; border-radius: 0"
+                    (change)="updateCurrentDate()" [(ngModel)]="selectedYear">
+              <option *ngFor="let year of years" [value]="year"
+                      [selected]="year === currentDate().getFullYear()">{{ year }}
+              </option>
+            </select>
+          </div>
+          <div (click)="resetDate()"
+               style="font-size: 15px; font-weight: 200; text-decoration: none; color: white; border: 1px solid white; cursor: pointer"
+               class="reset" id="reset" title="Reset">
+            <span style="padding: 0 5px 0 5px; text-align: center;">R</span>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; width: 100%; margin-top: auto; font-size: 0.7rem">
+          <input type="text" placeholder="Brand/Model" style="max-width: 75px; height: 20px" (change)="filterBrandModel($event)">
+          <input type="text" placeholder="Plate" style="max-width: 75px; height: 20px" (change)="filterPlate($event)">
+          <input type="text" placeholder="License" style="max-width: 75px; height: 20px" (change)="filterRequired($event)">
+        </div>
+      </th>
+      <th *ngFor="let date of dates()" class="text-center">
+        <div>
+          <strong class="skinny-month">{{ date.toLocaleString('default', {month: 'short'}) }}</strong><br>
+          <span class="skinny-number">{{ date.getDate() }}</span><br>
+          <span class="skinny-weekday">{{ date.toLocaleString('default', {weekday: 'short'}) }}</span>
+        </div>
+
+      </th>
+    </tr>
+    </thead>
+    <tbody class="dark-mode">
+    <tr *ngFor="let car of filteredCars(); let i = index">
+      <th style="max-height: 20px">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-around">
+          <div class="skinny-car">
+            <span *ngIf="(car.brand + ' ' + car.model).length > 18" data-bs-toggle="tooltip" data-bs-html="true"
+                  title="{{ car.brand }} {{ car.model }}">
+              {{ (car.brand + ' ' + car.model).substring(0, 18) + '...' }}
+            </span>
+            <span *ngIf="(car.brand + ' ' + car.model).length < 18">
+              {{ (car.brand + ' ' + car.model) }}
+            </span>
+          </div>
+          <div style="background-color: rgba(128,128,128,0.29); padding: 0 8px 0 8px; box-shadow: #6c6c6c 1px 1px"
+               class="skinny-car">{{ car.plate }}
+          </div>
+          <div style="background-color: rgba(128,128,128,0.29); padding: 0 8px 0 8px; box-shadow: #6c6c6c 1px 1px"
+               class="skinny-car">{{ car.required }}
+          </div>
+        </div>
+      </th>
+      <td *ngFor="let date of dates();" data-bs-toggle="tooltip" data-bs-html="true"
+          title="{{ car.brand}} {{ car.model }}  {{ car.plate }} {{ car.required}}"
+          style="padding: 0; width: 100px; height: 10px;">
+        <div *ngIf="checkOrderOnDate(car.orders, date)" style="display: flex; width: 100%; height: 100%;">
+          <div *ngFor="let slice of slices"
+               [ngClass]="{'order': car.orders[getOrder(date, car.orders)].slices[slice], 'no-order': !car.orders[getOrder(date, car.orders)].slices[slice]}">
+
+          </div>
+        </div>
+      </td>
+    </tr>
+    <tr routerLink="add-car" style="border: none; cursor: pointer">
+      <td style="background-color: rgb(101,166,101); width: 10%">Add Car</td>
+    </tr>
+    </tbody>
+
+  </table>
+
+</div>
+
+<div class="fixed-bottom container-fluid py-3 unselectable" style="max-width: 500px">
+  <div class="d-flex justify-content-center">
+    <div aria-label="...">
+      <ul class="pagination slide slide">
+        <li (click)="slideDateChange(-7)" class="page-item">
+          <div class="page-link">-7</div>
+        </li>
+        <li (click)="slideDateChange(-2)" class="page-item">
+          <div class="page-link">-2</div>
+        </li>
+        <li (click)="slideDateChange(-1)" class="page-item">
+          <div class="page-link">-1</div>
+        </li>
+        <li (click)="slideDateChange(1)" class="page-item">
+          <div class="page-link">+1</div>
+        </li>
+        <li (click)="slideDateChange(2)" class="page-item">
+          <div class="page-link">+2</div>
+        </li>
+        <li (click)="slideDateChange(7)" class="page-item">
+          <div class="page-link">+7</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const tableHeaders = document.querySelectorAll('.table-header');
+
+  tableHeaders.forEach(header => {
+    const headerWidth = header.offsetWidth;
+    header.style.width = `${headerWidth}px`;
+  });
+</script>

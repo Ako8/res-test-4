@@ -1,0 +1,20 @@
+.others {
+  background-color: #464545;
+}
+
+.others a {
+  text-decoration: none;
+  color: #dad8d8;
+}
+
+.others li {
+  text-align: left;
+  padding-bottom: 20px;
+
+}
+
+.others li:hover {
+  background-color: #6c6c6c;
+  color: #ffffff;
+
+}

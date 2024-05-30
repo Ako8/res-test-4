@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark hidden-print" id="top-menu">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="cars" id="logo">
+      <img alt="Logo" id="logo1" src="./assets/logo%20ai%20png%20no%20bckr%20(2).png" style="width: 50px">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li id="cars-item" class="nav-item">
+          <a routerLink="cars" class="nav-link">
+            <i class="icon-calendar"></i>
+            <span style="font-size: 20px; font-weight: 200">Calendar</span>
+          </a>
+        </li>
+        <li id="rentacarpayments-item" class="nav-item">
+          <a routerLink="history" class="nav-link">
+            <i class="icon-align-justify"></i>
+            <span style="font-size: 20px; font-weight: 200">History</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li id="misc-item" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle others-button" href="#" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false">
+            <i class="icon-gear"></i>
+            <span style="font-size: 20px; font-weight: 200">Other</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end others">
+            <li id="clients-item" class="dropdown-item">
+              <a href="/clients/">
+                <i class="icon-group"></i>
+                <span>Customers</span>
+              </a>
+            </li>
+            <li id="delivery-item" class="dropdown-item">
+              <a href="/delivery/">
+                <i class="icon-exchange"></i>
+                <span>Delivery</span>
+              </a>
+            </li>
+            <li id="tariffs-item" class="dropdown-item">
+              <a href="/discounts/">
+                <i class="icon-eur"></i>
+                <span>Discounts and price rises</span>
+              </a>
+            </li>
+            <li id="extracosts-item" class="dropdown-item">
+              <a href="/extra_costs/">
+                <i class="fa fa-cogs"></i>
+                <span>Extras</span>
+              </a>
+            </li>
+            <li id="settings-item" class="dropdown-item">
+              <a href="/settings/">
+                <i class="icon-wrench"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <hr style="color: white">
+            <li id="logout" class="dropdown-item">
+              <a data-method="delete" href="/users/sign_out/" rel="nofollow">
+                <i class="icon-power-off"></i>
+                <span>Log out</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,350 @@
+<form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+  <div class="card mb-4">
+    <div class="card-header">Car</div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="brand">Brand</label>
+            <input id="brand" type="text" class="form-control form-control-no-rounded" formControlName="brand">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="model">Model</label>
+            <input id="model" type="text" class="form-control form-control-no-rounded" formControlName="model">
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="licensePlate">License Plate</label>
+            <input id="licensePlate" type="text" class="form-control form-control-no-rounded"
+                   formControlName="licensePlate">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="yearOfManufacture">Year of Manufacture</label>
+            <input id="yearOfManufacture" type="number" class="form-control form-control-no-rounded"
+                   formControlName="yearOfManufacture">
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="bodyColor">Body Color</label>
+            <select id="bodyColor" class="form-select form-control-no-rounded" formControlName="bodyColor">
+              <option *ngFor="let color of ['Red', 'Blue', 'Black', 'White']" [value]="color">
+                {{ color }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="bodyType">Body Type</label>
+            <select id="bodyType" class="form-select form-control-no-rounded" formControlName="bodyType">
+              <option *ngFor="let type of ['Sedan', 'SUV', 'Truck', 'Coupe']" [value]="type">
+                {{ type }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Mileage Limit</div>
+    <div class="card-body">
+      <div class="form-check mb-3">
+        <input id="unlimited" type="checkbox" class="form-check-input" formControlName="unlimited">
+        <label for="unlimited" class="form-check-label">Unlimited</label>
+      </div>
+      <div *ngIf="!carForm.get('unlimited')?.value">
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-group">
+              <label for="limit">Limit (km/day)</label>
+              <input id="limit" type="number" class="form-control form-control-no-rounded" formControlName="limit">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="overageFee">Overage Fee ($/km)</label>
+              <input id="overageFee" type="number" class="form-control form-control-no-rounded"
+                     formControlName="overageFee">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card mb-4">
+    <div class="card-header">Engine</div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="engineType">Engine Type</label>
+            <input id="engineType" type="number" class="form-control form-control-no-rounded"
+                   formControlName="engineType">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="horsepower">Horsepower</label>
+            <input id="horsepower" type="number" class="form-control form-control-no-rounded"
+                   formControlName="horsepower">
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="fuel">Fuel</label>
+            <select id="fuel" class="form-select form-control-no-rounded" formControlName="fuel">
+              <option *ngFor="let fuelType of ['Petrol', 'Diesel', 'Electric', 'Hybrid']" [value]="fuelType">
+                {{ fuelType }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="tankCapacity">Tank Capacity</label>
+            <input id="tankCapacity" type="number" class="form-control form-control-no-rounded"
+                   formControlName="tankCapacity">
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="fuelConsumption">Fuel Consumption (L/100km)</label>
+            <input id="fuelConsumption" type="number" class="form-control form-control-no-rounded"
+                   formControlName="fuelConsumption">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Chassis</div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="transmission">Transmission</label>
+            <select id="transmission" class="form-select form-control-no-rounded" formControlName="transmission">
+              <option *ngFor="let transmissionType of ['Manual', 'Automatic']" [value]="transmissionType">
+                {{ transmissionType }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="drive">Drive</label>
+            <select id="drive" class="form-select form-control-no-rounded" formControlName="drive">
+              <option *ngFor="let driveType of ['FWD', 'RWD', 'AWD', '4WD']" [value]="driveType">
+                {{ driveType }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input id="abs" type="checkbox" class="form-check-input" formControlName="abs">
+        <label for="abs" class="form-check-label">ABS</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="ebd" type="checkbox" class="form-check-input" formControlName="ebd">
+        <label for="ebd" class="form-check-label">EBD</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="esp" type="checkbox" class="form-check-input" formControlName="esp">
+        <label for="esp" class="form-check-label">ESP</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Other</div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="requiredLicense">Required License</label>
+            <select id="requiredLicense" class="form-select form-control-no-rounded" formControlName="requiredLicense">
+              <option *ngFor="let licenseType of ['A', 'B', 'C']" [value]="licenseType">
+                {{ licenseType }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="seats">Seats</label>
+            <input id="seats" type="number" class="form-control form-control-no-rounded" formControlName="seats">
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="numberOfDoors">Number of Doors</label>
+            <select id="numberOfDoors" class="form-select form-control-no-rounded" formControlName="numberOfDoors">
+              <option *ngFor="let door of [2, 4, 5]" [value]="door">
+                {{ door }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="airConditioning">Air Conditioning</label>
+            <select id="airConditioning" class="form-select form-control-no-rounded" formControlName="airConditioning">
+              <option *ngFor="let ac of ['None', 'Manual', 'Automatic']" [value]="ac">
+                {{ ac }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="interior">Interior</label>
+            <select id="interior" class="form-select form-control-no-rounded" formControlName="interior">
+              <option *ngFor="let interiorType of ['Cloth', 'Leather', 'Synthetic']" [value]="interiorType">
+                {{ interiorType }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="roof">Roof</label>
+            <select id="roof" class="form-select form-control-no-rounded" formControlName="roof">
+              <option *ngFor="let roofType of ['Solid', 'Sunroof', 'Convertible']" [value]="roofType">
+                {{ roofType }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input id="poweredWindows" type="checkbox" class="form-check-input" formControlName="poweredWindows">
+        <label for="poweredWindows" class="form-check-label">Powered Windows</label>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="form-group">
+            <label for="airbags">Airbags</label>
+            <input id="airbags" type="number" class="form-control form-control-no-rounded" formControlName="airbags">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="sideWheel">Side Wheel</label>
+            <select id="sideWheel" class="form-select form-control-no-rounded" formControlName="sideWheel">
+              <option *ngFor="let wheelType of ['Standard', 'Spare']" [value]="wheelType">
+                {{ wheelType }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input id="cruiseControl" type="checkbox" class="form-check-input" formControlName="cruiseControl">
+        <label for="cruiseControl" class="form-check-label">Cruise Control</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="rearViewCamera" type="checkbox" class="form-check-input" formControlName="rearViewCamera">
+        <label for="rearViewCamera" class="form-check-label">Rear View Camera</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="parkingAssist" type="checkbox" class="form-check-input" formControlName="parkingAssist">
+        <label for="parkingAssist" class="form-check-label">Parking Assist</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Music</div>
+    <div class="card-body">
+      <div class="form-check mb-3">
+        <input id="radio" type="checkbox" class="form-check-input" formControlName="radio">
+        <label for="radio" class="form-check-label">Radio</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="aux" type="checkbox" class="form-check-input" formControlName="aux">
+        <label for="aux" class="form-check-label">AUX</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="usb" type="checkbox" class="form-check-input" formControlName="usb">
+        <label for="usb" class="form-check-label">USB</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="mp3" type="checkbox" class="form-check-input" formControlName="mp3">
+        <label for="mp3" class="form-check-label">MP3</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="bluetooth" type="checkbox" class="form-check-input" formControlName="bluetooth">
+        <label for="bluetooth" class="form-check-label">Bluetooth</label>
+      </div>
+      <div class="form-check mb-3">
+        <input id="audioCD" type="checkbox" class="form-check-input" formControlName="audioCD">
+        <label for="audioCD" class="form-check-label">Audio CD</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Insurance</div>
+    <div class="card-body">
+      <div class="form-check mb-3">
+        <input id="franchise" type="checkbox" class="form-check-input" formControlName="franchise">
+        <label for="franchise" class="form-check-label">Franchise</label>
+      </div>
+      <div *ngIf="carForm.get('franchise')?.value">
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-group">
+              <label for="franchiseAmount">Franchise Amount ($)</label>
+              <input id="franchiseAmount" type="number" class="form-control form-control-no-rounded"
+                     formControlName="franchiseAmount">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input id="deposit" type="checkbox" class="form-check-input" formControlName="deposit">
+        <label for="deposit" class="form-check-label">Deposit</label>
+      </div>
+      <div *ngIf="carForm.get('deposit')?.value">
+        <div class="row mb-3">
+          <div class="col">
+            <div class="form-group">
+              <label for="depositAmount">Deposit Amount ($)</label>
+              <input id="depositAmount" type="number" class="form-control form-control-no-rounded"
+                     formControlName="depositAmount">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <button type="submit" style="border-radius: 0; background-color: rgb(101,166,101); color: white" class="btn">Add Car</button>
+    <p class="text-center">Once you submit your car for moderation, it will undergo a review process before becoming accessible to customers on Resorter.ge. Typically, this moderation phase lasts around 2 days on average.</p>
+  </div>
+</form>

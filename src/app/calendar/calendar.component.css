@@ -1,0 +1,96 @@
+.table td {
+  vertical-align: middle;
+}
+
+.table-responsive {
+  max-height: calc(100vh - 80px);
+  margin-bottom: -50px;
+}
+
+.table-header th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 1;
+}
+.skinny-number {
+  font-size: 2rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+.skinny-weekday {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.skinny-car {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.skinny-month {
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+.calendar th {
+  background-color: rgba(21, 19, 19, 0.8);
+  color: white;
+}
+
+.dark-mode th{
+  background-color: rgb(21, 19, 19, 0.8);
+  color: white;
+}
+
+.dark-mode td{
+  background-color: rgba(100, 103, 102, 0.34);
+}
+
+.dark-mode-table {
+  border-color: gray
+}
+
+.slide div{
+  margin: 5px;
+  cursor: pointer;
+  background-color: rgba(40,39,39,0.78);
+  text-decoration: none;
+  color: white
+}
+
+.slide div:hover{
+  transform: scale(110%);
+  transition: transform .2s;
+}
+
+.reset:hover{
+  transform: scale(105%);
+  transition: transform .2s;
+}
+
+
+.no-order{
+  flex: 1;
+}
+
+.order{
+  flex: 1;
+  background-color: #2067c3;
+  cursor: pointer;
+  margin-bottom: 1px;
+  margin-top: 2px;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
